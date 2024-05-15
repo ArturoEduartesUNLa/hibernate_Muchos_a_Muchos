@@ -11,8 +11,8 @@
 		<!-- en true muestra hql en consola-->
 		<property name="show_sql">false</property>
 		<!-- Mapeo Entidades -->
-		<!-- <mapping resource="mapeo/Cliente.hbm.xml"/>
-		<mapping resource="mapeo/Evento.hbm.xml"/> -->
+		 <mapping resource="mapeo/Cliente.hbm.xml"/>
+		<mapping resource="mapeo/Evento.hbm.xml"/>
 	</session-factory>
 	
 </hibernate-configuration>
