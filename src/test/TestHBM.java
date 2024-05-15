@@ -7,6 +7,7 @@ import dao.HibernateUtil;
 
 public class TestHBM {
 
+	//COMPLETE
 	public static void main(String[] args) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
