@@ -7,7 +7,7 @@ import dao.HibernateUtil;
 
 public class TestHBM {
 
-	//COMPLETE
+	// COMPLETE
 	public static void main(String[] args) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -15,7 +15,6 @@ public class TestHBM {
 		System.out.println(tx.getStatus());
 		session.close();
 		System.out.println("Ok connection");
-		
 
 	}
 
