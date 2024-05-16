@@ -1,8 +1,11 @@
 -- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
 --
--- Host: localhost    Database: bd-hibernate-muchos-a-muchos
+-- Host: localhost    Database: unla_test
 -- ------------------------------------------------------
 -- Server version	5.7.25-0ubuntu0.16.04.2
+
+create schema if not exists unla_test;
+use unla_test;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
