@@ -13,7 +13,7 @@
     <property column="fechaDeNacimiento" name="fechaDeNacimiento" type="LocalDate"/>
     <property column="baja" name="baja" type="boolean"/>
         
-    <set table="eventoxcliente" name="eventos" outer-join="true">
+    <set table="eventoxcliente" name="eventos" order-by="idEvento asc"  cascade= "save-update" outer-join="true">
 	<key column="idCliente"/>
 	<many-to-many column="idEvento" class="datos.Evento"/>
 	</set>
