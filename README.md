@@ -1,4 +1,4 @@
-# Hibernate_UnaEntidad con modificaciones 
+# Hibernate_Muchos_a_Muchos 
 Proyecto de la Materia Orientacion a Objetos II - Universidad Nacional de Lanus - UNLa.
 Persistencia de Objetos a Base de Datos utilizando especificacion ORM (Object Relational Mapping)
 ## Detalles
