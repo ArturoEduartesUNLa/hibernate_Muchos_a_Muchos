@@ -131,10 +131,23 @@ public class Cliente {
 		return result;
 	}
 
+	public boolean actualizar(Evento e) {
+		boolean result = false;
+		Iterator<Evento> it = getEventos().iterator();
+		while (it.hasNext() && result == false) {
+			Evento evento = (Evento) it.next();
+			if (evento.getIdEvento() == e.getIdEvento()) {
+				getEventos().remove(evento); // evento original
+				result = getEventos().add(e); // agrega nuevo evento
+			}
+		}
+		return result;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", apellido=" + apellido + ", nombre=" + nombre + ", dni=" + dni
-				+ ", fechaDeNacimiento=" + fechaDeNacimiento + ", baja=" + baja + ", evento=" + eventos + "]";
+				+ ", fechaDeNacimiento=" + fechaDeNacimiento + ", baja=" + baja + "]";
 	}
 
 }
