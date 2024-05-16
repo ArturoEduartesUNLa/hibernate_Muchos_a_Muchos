@@ -2,6 +2,7 @@ package datos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -78,6 +79,31 @@ public class Evento {
 		Evento other = (Evento) obj;
 		return Objects.equals(clientes, other.clientes) && Objects.equals(evento, other.evento)
 				&& Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora) && idEvento == other.idEvento;
+	}
+
+	public boolean agregar(Cliente c) {
+		boolean result = false;
+		if (!getClientes().contains(c))
+			result = getClientes().add(c);
+		return result;
+	}
+
+	public boolean eliminar(Cliente c) {
+		boolean result = false;
+		Iterator<Cliente> it = getClientes().iterator();
+		while (it.hasNext() && !result) {
+			Cliente cliente = it.next();
+			if (cliente.equals(c))
+				result = getClientes().remove(c);
+		}
+		return result;
+	}
+
+	public boolean actualizar(Cliente c) {
+		boolean result = eliminar(c);
+		if (result)
+			result = agregar(c);
+		return result;
 	}
 
 	@Override

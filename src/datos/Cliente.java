@@ -123,8 +123,8 @@ public class Cliente {
 		boolean result = false;
 		Iterator<Evento> it = getEventos().iterator();
 
-		while (it.hasNext() && result == false) {
-			Evento evento = (Evento) it.next();
+		while (it.hasNext() && !result) {
+			Evento evento = it.next();
 			if (ev.equals(evento))
 				result = getEventos().remove(evento);
 		}
@@ -132,15 +132,9 @@ public class Cliente {
 	}
 
 	public boolean actualizar(Evento e) {
-		boolean result = false;
-		Iterator<Evento> it = getEventos().iterator();
-		while (it.hasNext() && result == false) {
-			Evento evento = (Evento) it.next();
-			if (evento.getIdEvento() == e.getIdEvento()) {
-				getEventos().remove(evento); // evento original
-				result = getEventos().add(e); // agrega nuevo evento
-			}
-		}
+		boolean result = eliminar(e);
+		if (result)
+			result = agregar(e);
 		return result;
 	}
 
