@@ -21,10 +21,7 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(long idCliente, String apellido, String nombre, long dni, LocalDate fechaDeNacimiento,
-			boolean baja) {
-		super();
-		this.idCliente = idCliente;
+	public Cliente(String apellido, String nombre, long dni, LocalDate fechaDeNacimiento, boolean baja) {
 		this.apellido = apellido;
 		this.nombre = nombre;
 		this.dni = dni;

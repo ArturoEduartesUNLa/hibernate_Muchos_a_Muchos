@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,17 +11,6 @@ import datos.Evento;
 public class EventoDao {
 	private static Session session;
 	private static Transaction tx;
-	private static EventoDao eventoDao;
-
-	private EventoDao() {
-
-	}
-
-	public static EventoDao getInstance() {
-		if (eventoDao == null)
-			eventoDao = new EventoDao();
-		return eventoDao;
-	}
 
 	private void iniciaOperacion() throws HibernateException {
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -102,5 +93,28 @@ public class EventoDao {
 		}
 		return e;
 
+	}
+
+	public List<Evento> traer() {
+		List<Evento> lista = null;
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Evento e order by e.idEvento", Evento.class).list();
+		} finally {
+			session.close();
+		}
+
+		return lista;
+	}
+
+	public List<Evento> traerAllWithClients() {
+		List<Evento> lista = null;
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Evento e left join fetch e.clientes c", Evento.class).list();
+		} finally {
+			session.close();
+		}
+		return lista;
 	}
 }
