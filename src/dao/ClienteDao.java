@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
-import datos.Evento;
 
 /*COMPLETE
  * 
@@ -16,16 +15,6 @@ import datos.Evento;
 public class ClienteDao {
 	private static Session session;
 	private static Transaction tx;
-	private static ClienteDao clienteDao;
-
-	private ClienteDao() {
-	}
-
-	public static ClienteDao getInstance() {
-		if (clienteDao == null)
-			clienteDao = new ClienteDao();
-		return clienteDao;
-	}
 
 	private static void iniciaOperacion() throws HibernateException {
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -115,17 +104,18 @@ public class ClienteDao {
 		}
 		return lista;
 	}
+
 	public Cliente traerConEventos(long idCliente) {
 		Cliente c = null;
 		try {
 			iniciaOperacion();
 			c = session.createQuery("from Cliente c left join fetch c.eventos e where c.idCliente = :idCliente",
-				Cliente.class).setParameter("idCliente", idCliente).uniqueResult();
+					Cliente.class).setParameter("idCliente", idCliente).uniqueResult();
 		} finally {
 			session.close();
 		}
 		return c;
 
 	}
-	
+
 }
