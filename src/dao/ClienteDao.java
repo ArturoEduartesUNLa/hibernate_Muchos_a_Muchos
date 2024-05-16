@@ -74,7 +74,7 @@ public class ClienteDao {
 		Cliente c;
 		try {
 			iniciaOperacion();
-			c = session.createQuery("fetch Cliente c where c.idCliente = :IDCliente", Cliente.class)
+			c = session.createQuery("from Cliente c where c.idCliente = :IDCliente", Cliente.class)
 					.setParameter("IDCliente", id).uniqueResult();
 		} finally {
 			session.close();
