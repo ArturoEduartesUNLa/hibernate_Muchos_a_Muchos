@@ -15,6 +15,16 @@ import datos.Cliente;
 public class ClienteDao {
 	private static Session session;
 	private static Transaction tx;
+	private static ClienteDao clienteDao;
+
+	private ClienteDao() {
+	}
+
+	public static ClienteDao getInstance() {
+		if (clienteDao == null)
+			clienteDao = new ClienteDao();
+		return clienteDao;
+	}
 
 	private static void iniciaOperacion() throws HibernateException {
 		session = HibernateUtil.getSessionFactory().openSession();
