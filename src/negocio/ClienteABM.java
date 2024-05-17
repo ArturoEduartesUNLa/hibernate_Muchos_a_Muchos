@@ -48,6 +48,13 @@ public class ClienteABM {
 	{
 		return dao.traerConEventos(idCliente);
 	}
+	
+	public List<Cliente> traerTodosClientesyEventos()
+	{
+		return dao.traerAllWithEvents();
+	}
+	
+	
 	// -------- ABM ---------
 	public long agregar(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento, boolean baja)
 			throws Exception {
