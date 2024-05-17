@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
-import datos.Evento;
 
 /*COMPLETE
  * 
