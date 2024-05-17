@@ -9,7 +9,7 @@
     <property column="fecha" name="fecha" type="LocalDate"/>
       <property column="hora" name="hora" type="LocalTime"/>
       
-    <set table="eventoxcliente" name="clientes" outer-join="true">
+    <set table="eventoxcliente" name="clientes" order-by="idCliente" outer-join="true">
 	<key column="idEvento"/>
     <many-to-many column="idCliente" class="datos.Cliente"/>
     </set>

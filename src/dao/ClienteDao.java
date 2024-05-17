@@ -2,11 +2,13 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
+import datos.Evento;
 
 /*COMPLETE
  * 
@@ -74,7 +76,7 @@ public class ClienteDao {
 		Cliente c;
 		try {
 			iniciaOperacion();
-			c = session.createQuery("fetch Cliente c where c.idCliente = :IDCliente", Cliente.class)
+			c = session.createQuery("from Cliente c where c.idCliente = :IDCliente", Cliente.class)
 					.setParameter("IDCliente", id).uniqueResult();
 		} finally {
 			session.close();
@@ -118,4 +120,16 @@ public class ClienteDao {
 
 	}
 
+	public List<Cliente> traerAllWithEvents() {
+		List<Cliente> lista = null;
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Cliente c order by c.idCliente", Cliente.class).list();
+			lista.forEach(t -> Hibernate.initialize(t.getEventos()));
+
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
 }
